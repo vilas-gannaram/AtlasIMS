@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 
-router = APIRouter(prefix="/warehouse", tags=["warehouse"])
+router = APIRouter(prefix="/warehouse", tags=["Warehouse"])
 
 
 @router.get("/")
