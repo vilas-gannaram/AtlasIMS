@@ -1,9 +1,9 @@
 from fastapi import FastAPI
 
-from modules.inventory.endpoints import router as inventory_router
-from modules.orders.endpoints import router as orders_router
-from modules.products.endpoints import router as products_router
-from modules.warehouse.endpoints import router as warehouse_router
+from modules.inventory.router import router as inventory_router
+from modules.orders.router import router as orders_router
+from modules.products.router import router as products_router
+from modules.warehouse.router import router as warehouse_router
 
 app = FastAPI()
 
