@@ -1,4 +1,4 @@
-name: 'ims'
+name: 'atlas_ims'
 
 services:
   postgres:
