@@ -1,5 +1,5 @@
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
-from sqlalchemy.orm import declarative_base
+from sqlalchemy.orm import DeclarativeBase
 
 from .config import settings
 
@@ -11,8 +11,10 @@ AsyncSessionLocal = async_sessionmaker(
     bind=engine, class_=AsyncSession, expire_on_commit=False
 )
 
+
 # Base class for your models
-Base = declarative_base()
+class Base(DeclarativeBase):
+    pass
 
 
 # Dependency for FastAPI routes

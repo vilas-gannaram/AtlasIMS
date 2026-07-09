@@ -1,27 +1,16 @@
 from uuid import UUID
 
+from sqlalchemy import select
+from sqlalchemy.ext.asyncio import AsyncSession
 
-def get_inventory_list():
-    # Later: fetch from DB
-    return [
-        {
-            "id": "1",
-            "product": "Laptop",
-            "quantity": 25,
-        },
-        {
-            "id": "2",
-            "product": "Mouse",
-            "quantity": 100,
-        },
-    ]
+from .models import Inventory
 
 
-def get_inventory_item(item_id: UUID):
-    # Later: fetch from DB
-    return {
-        "id": str(item_id),
-        "product": "Laptop",
-        "quantity": 25,
-        "warehouse": "Main Warehouse",
-    }
+async def get_inventory_list(db: AsyncSession):
+    result = await db.execute(select(Inventory))
+    return result.scalars().all()
+
+
+async def get_inventory_item(item_id: UUID, db: AsyncSession) -> Inventory | None:
+    result = await db.execute(select(Inventory).where(Inventory.id == item_id))
+    return result.scalar_one_or_none()

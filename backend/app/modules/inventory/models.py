@@ -5,6 +5,9 @@ from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship
 
 from ...core.database import Base
+from ..products.models import Product
+
+_ = Product
 
 
 class Inventory(Base):
@@ -16,4 +19,7 @@ class Inventory(Base):
     quantity_available = Column(Integer, default=0)
     quantity_reserved = Column(Integer, default=0)
 
-    product = relationship("Product", back_populates="stock_levels")
+    product = relationship(
+        "Product",
+        back_populates="stock_levels",
+    )

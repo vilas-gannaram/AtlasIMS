@@ -15,9 +15,6 @@ help:
 install:
 	uv sync
 
-sync:
-	uv sync
-
 run:
 	uv run uvicorn app.main:app
 
